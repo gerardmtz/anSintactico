@@ -119,11 +119,11 @@ int Sintactico::buscaTabla(char a[], char x[])
         if(strcmp(a, token[i]) == 0)
             inda = i;//9 int
 
-    for(i=0; i<15; i++)
+    for(i=0; i<16; i++)
         if(strcmp(x, varsint[i]) == 0)
             indx=i; //1 D
 
-    for(i=0; i<44; i++)
+    for(i=0; i<65; i++)
     {
         if(indx == tablaM[i][0])
             if(inda == tablaM[i][1])
