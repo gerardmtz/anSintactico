@@ -1,0 +1,76 @@
+{
+  "themes": {
+    "monokai": {
+      "name": "Monokai",
+      "type": "dark",
+      "colors": {
+        "editor.background": "#272822",
+        "editor.foreground": "#f8f8f2",
+        "editor.lineHighlightBackground": "#3e3d32",
+        "editor.selectionBackground": "#49483e",
+        "editor.inactiveSelectionBackground": "#3e3d32",
+        "editorCursor.foreground": "#f8f8f0",
+        "editorWhitespace.foreground": "#3b3a32",
+        "editorIndentGuide.background": "#3b3a32"
+      },
+      "tokenColors": {
+        "comment": "#75715e",
+        "string": "#e6db74",
+        "number": "#ae81ff",
+        "keyword": "#f92672",
+        "function": "#a6e22e",
+        "variable": "#f8f8f2",
+        "operator": "#f92672",
+        "class": "#66d9ef"
+      }
+    },
+    "solarized-dark": {
+      "name": "Solarized Dark",
+      "type": "dark",
+      "colors": {
+        "editor.background": "#002b36",
+        "editor.foreground": "#839496",
+        "editor.lineHighlightBackground": "#073642",
+        "editor.selectionBackground": "#073642",
+        "editor.inactiveSelectionBackground": "#073642",
+        "editorCursor.foreground": "#839496",
+        "editorWhitespace.foreground": "#073642",
+        "editorIndentGuide.background": "#073642"
+      },
+      "tokenColors": {
+        "comment": "#586e75",
+        "string": "#2aa198",
+        "number": "#d33682",
+        "keyword": "#859900",
+        "function": "#268bd2",
+        "variable": "#cb4b16",
+        "operator": "#6c71c4",
+        "class": "#b58900"
+      }
+    },
+    "clean-light": {
+      "name": "Clean Light",
+      "type": "light",
+      "colors": {
+        "editor.background": "#ffffff",
+        "editor.foreground": "#383a42",
+        "editor.lineHighlightBackground": "#f2f2f2",
+        "editor.selectionBackground": "#e5e5e6",
+        "editor.inactiveSelectionBackground": "#e5e5e6",
+        "editorCursor.foreground": "#526fff",
+        "editorWhitespace.foreground": "#d1d1d1",
+        "editorIndentGuide.background": "#d1d1d1"
+      },
+      "tokenColors": {
+        "comment": "#a0a1a7",
+        "string": "#50a14f",
+        "number": "#986801",
+        "keyword": "#a626a4",
+        "function": "#4078f2",
+        "variable": "#e45649",
+        "operator": "#0184bc",
+        "class": "#c18401"
+      }
+    }
+  }
+}
