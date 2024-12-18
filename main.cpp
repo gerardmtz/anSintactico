@@ -89,8 +89,8 @@ FILE *Fd;
 
 */
 
-char token[22][8] = {"x", ";", ",", "*", "Id", "[", "]", "Num", "char", "int", "float",
-    "puts", "(", ")", "Cte.Lit", "{", "}", "=","+","-","/", "Real"};
+char token[25][8] = {"x", ";", ",", "*", "Id", "[", "]", "Num", "char", "int", "float",
+    "puts", "(", ")", "Cte.Lit", "{", "}", "=","+","-","/", "Real", "?", ":"};
 
 char varsint[22][3]={"x", "D", "L", "L'", "I", "I'", "A", "A'", "K",
     "T", "F", "E", "P", "K'", "W", "W'"};
@@ -139,7 +139,7 @@ int tablaM[100][9]= {{1, 5, 1, 5, 999, -1, 999, 999}, //[ D->I';
         /* 25*/     {10, 11, 10, -11, 11, -1, 999, 999},//puts F-> puts E;
                     {10, 16, 10, -16, 999, 999, 999, 999},//} F-> };
                     {11, 6, 11, -6, 1, 999, 999, 999},//]E -> ]D
-                    {11, 12, 11, -12, 12, -13, 999, 999},//( E -> (P)
+                    {11, 12, 11, -12, 8, -13, 999, 999},//( E -> (K)
                     {11, 13, 11, -13, 999, 999, 999, 999},//)E -> )
                     {12, 14, 12, -14, 999, 999, 999, 999},//cte lit P->cte lit
                     {12, 18, 12, -18, 8, 999, 999, 999},//+ P -> + k
@@ -168,7 +168,15 @@ int tablaM[100][9]= {{1, 5, 1, 5, 999, -1, 999, 999}, //[ D->I';
 
                     {15, 2, 15, -2, 14, 999, 999, 999, 999},   // , W' --> ,W
                     {15, 13, 15, -13, 999, 999, 999, 999},     // ) W' --> )
-                    {5, 12, 5, -12, 14, 999, 999, 999}         // ( I' --> (W
+                    {5, 12, 5, -12, 14, 999, 999, 999},         // ( I' --> (W
+
+                    /*  {2, 5, 2, 6, 999, 999, 999},            // [ L --> A
+                    {12, 14, 12, -4, -17, 999, 999},        // id P --> id=
+                    {8, 6, 8, 999, 999, 999},               // ] K --> e            ARREGLOS GADY
+                    {14, 7, 14, -7, 15, 999, 999},          // num W --> numW'
+                    {3, 15, 3, -15, 15, 999, 999},          // { L' --> {W'
+                    {14, 16, 14, 999, 999, 999, 999},       // } W --> e */
+                    //{1, 11, 1, -11, 8, 1, 999, 999}
                    };
 
 
@@ -376,6 +384,8 @@ void vanalisislexico()
                     case '-': edoAct=6; break;
                     case '*': edoAct=7; break;
                     case '/': edoAct=8; break;
+                    case '?': edoAct=41; break;
+                    case ':': edoAct=42; break;
                     default: falla();
                 }
                 break;
@@ -668,6 +678,19 @@ void vanalisislexico()
             iniToken=indice;
             viniedos();
             break;
+
+        case 41: strcpy(asTokens[k++], "?");
+                if (indice>=numBytesArch)
+                    return;
+                iniToken=indice;
+                viniedos();
+                break;
+        case 42: strcpy(asTokens[k++], ":");
+                if (indice>=numBytesArch)
+                    return;
+                iniToken=indice;
+                viniedos();
+                break;
         }/*switch*/
     } /*while*/
 }
@@ -931,7 +954,7 @@ void vanalisis_sintactico()
             }
         }
      }while(strcmp(x, "$") != 0);
-    printf("\n");
+    printf("Todo bien.\n");
 }
 
 void insertapila(string elem)//(char *elem) //(char elem[])
@@ -978,7 +1001,7 @@ int buscaTabla(char a[], char x[])
 {
     int indx=0, inda=0, i;
 
-    for(i=0; i<23; i++){
+    for(i=0; i<26; i++){
         if(strcmp(a, token[i]) == 0){
             inda = i; 
             break;
@@ -992,7 +1015,7 @@ int buscaTabla(char a[], char x[])
         }
     }
 
-    for(i=0; i<65; i++)
+    for(i=0; i<100; i++)
     {
         if(indx == tablaM[i][0])
             if(inda == tablaM[i][1])
